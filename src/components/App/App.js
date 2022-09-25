@@ -76,21 +76,17 @@ class App extends React.Component{
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>
+        <a href="http://localhost:3000">Spotify</a>
+      </h1>
+      <div className="App">
+        <SearchBar onSearch={this.search} />
+        <div className="App-Playlist">
+          <SearchResults SearchResults={this.state.SearchResults} onAdd={this.doThese} />
+          <Playlist playlistTracks={this.state.playlistTracks} onNameChange={this.updatePlaylistName} onRemove={this.removeTrack} onSave={this.savePlaylist} />
+        </div>
+      </div>
     </div>
   );
 }
