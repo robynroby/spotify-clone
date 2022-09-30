@@ -18,20 +18,17 @@ const Spotify ={
             window.history.pushState('accessToken',null,'/')
             return accessToken
         }else{
-            const accessUrl='https://accounts.spotify.com/authorize?client_id={$clientid}&reponse_type=token&scope=playlist-modify-public&redirect_url=${redirectUrl}'
+            const accessUrl='https://accounts.spotify.com/authorize?client_id=${clientId}&reponse_type=token&scope=playlist-modify-public&redirect_url=${redirectUrl}'
             window.location=accessUrl;
         }
     },
     search(term){
-        const accessToken=spotify.getAccessToken();
-        return fetch('https://api.spotify.com/v1/search?type=track&g=${term}',{
+        const accessToken=Spotify.getAccessToken();
+        return fetch('https://api.spotify.com/v1/search?type=track&q=${term}',{
             headers:{
                 authorisation:'Bearer ${accessToken}'
             }
         }).then(response => {
-            return response.json()
-        })
-        .then(jsonResponse => {
             return response.json()
         })
         .then(jsonResponse => {
@@ -68,7 +65,7 @@ const Spotify ={
             .then(jsonResponse => {
                 const playlistId=jsonResponse.id;
                 return fetch(
-                    'https://api.spotify.com/v1/users/${userid}/playlists/${playlistId}/tracks',
+                    'https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks',
                     {
                         headers: headers,
                         method: 'POST',
