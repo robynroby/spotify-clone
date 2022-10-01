@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import'./Track.css'
 
 class SeachBar extends React.Component {
@@ -30,7 +30,7 @@ class SeachBar extends React.Component {
                 )
         }
         return(
-                <button className='Track-action' onClick={this.addTack}> + </button>
+                <button className='Track-action' onClick={this.addTrack}> + </button>
             )
     }
 

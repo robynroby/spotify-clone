@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Playlist from '../Playlist/Playlist';
-import SearchBar from '../SeachBar/SeachBar';
-import SearchResults from '../SearchResults/SeachResults';
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
 import Spotify from '../../util/Spotify';
 
 class App extends React.Component{
@@ -75,14 +75,13 @@ class App extends React.Component{
     render() {
       return (
         <div>
-          <h1>
+        <h1>
             <a href="http://localhost:3000">Spotify</a>
           </h1>
           <div className="App">
             <SearchBar onSearch={this.search} />
             <div className="App-Playlist">
               <SearchResults SearchResults={this.state.SearchResults} onAdd={this.doThese} />
-              <Playlist playlistTracks={this.state.playlistTracks} onNameChange={this.updatePlaylistName} onRemove={this.removeTrack} onSave={this.savePlaylist} />
             </div>
           </div>
         </div>

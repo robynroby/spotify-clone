@@ -1,5 +1,5 @@
 const clientId = 'ceba833aae3a4dd097f7a7466bbdad76'
-const redirectUrl = 'http://localhost:3000/'
+const redirectUri = 'http://localhost:3000/'
 
 let accessToken
 
@@ -18,8 +18,8 @@ const Spotify ={
             window.history.pushState('accessToken',null,'/')
             return accessToken
         }else{
-            const accessUrl='https://accounts.spotify.com/authorize?client_id=${clientId}&reponse_type=token&scope=playlist-modify-public&redirect_url=${redirectUrl}'
-            window.location=accessUrl;
+            const accessUri='https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}'
+            window.location=accessUri;
         }
     },
     search(term){
@@ -79,3 +79,4 @@ const Spotify ={
 }
 
 export default Spotify;
+
