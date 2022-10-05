@@ -1,5 +1,6 @@
 const clientId = 'ceba833aae3a4dd097f7a7466bbdad76'
 const redirectUri = 'http://localhost:3000/'
+const clientSecret = 'e35d80dd922b44af9eba008b54da00bd'
 
 let accessToken
 
@@ -18,7 +19,7 @@ const Spotify ={
             window.history.pushState('accessToken',null,'/')
             return accessToken
         }else{
-            const accessUri='https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}'
+            const accessUri=' https://accounts.spotify.com/en/authorize?client_id=[clientId]&redirect_uri=[redirectUri]&response_type=token&show_dialog=true'
             window.location=accessUri;
         }
     },
@@ -26,7 +27,7 @@ const Spotify ={
         const accessToken=Spotify.getAccessToken();
         return fetch('https://api.spotify.com/v1/search?type=track&q=${term}',{
             headers:{
-                authorisation:'Bearer ${accessToken}'
+                authorisation:'Bearer '+ accessToken
             }
         }).then(response => {
             return response.json()
@@ -44,6 +45,7 @@ const Spotify ={
             }));
         });
     },
+    // https://accounts.spotify.com/en/authorize?client_id=[YOUR_CLIENT_ID]&redirect_uri=[YOUR_REDIRECT_URI]&response_type=token&show_dialog=true
     savePlaylist(name, trackUrls){
         if(!name || !trackUrls.length){
             return;
